@@ -13,12 +13,13 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
-  
+      background: url('fire-background.png') no-repeat center center fixed;
+      background-size: cover;
       color: white;
       line-height: 1.6;
     }
     header {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
@@ -44,6 +45,9 @@
     }
     section {
       padding: 3rem 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      margin: 1rem;
+      border-radius: 10px;
     }
     .section-title {
       font-size: 2rem;
@@ -85,11 +89,90 @@
       background-color: #e03e00;
     }
     footer {
+  font-size: 0.8rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
       text-align: center;
       padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      margin: 2rem;
     }
   </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll("nav a");
+      const sections = document.querySelectorAll("section");
+
+      // Hide all sections except home on load
+      sections.forEach(section => {
+        if (section.id !== "home") {
+          section.style.display = "none";
+        }
+      });
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          sections.forEach(section => {
+            section.style.display = "none";
+          });
+          document.getElementById(targetId).style.display = "block";
+          window.scrollTo(0, 0);
+        });
+      });
+    });
+  </script>
+
+  <style>
+    section {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    section.active {
+      opacity: 1;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll("nav a");
+      const sections = document.querySelectorAll("section");
+
+      function showSection(targetId) {
+        sections.forEach(section => {
+          section.classList.remove("active");
+          section.style.display = "none";
+        });
+        const targetSection = document.getElementById(targetId);
+        targetSection.style.display = "block";
+        setTimeout(() => {
+          targetSection.classList.add("active");
+        }, 10);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Initially show only the home section
+      sections.forEach(section => {
+        if (section.id === "home") {
+          section.style.display = "block";
+          section.classList.add("active");
+        } else {
+          section.style.display = "none";
+        }
+      });
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          showSection(targetId);
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 
@@ -107,49 +190,49 @@
     </nav>
   </header>
 
-  <section id="home">
-    <h2 class="section-title">Welcome to EUROTECH</h2>
+  
+<section id="home" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 90vh; text-align: center;">
+
+    <h2 class="section-title" style="font-size: 3rem;">Welcome to EUROTECH</h2>
     <p>We provide expert fire protection system services across the UAE. Safety, compliance, and reliability are at the heart of everything we do.</p>
-  </section>
+  
+</section>
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
+  <div class="card-container">
+    <div class="card"><h3>Fire Fighting</h3></div>
+    <div class="card"><h3>Fire Alarm</h3></div>
+    <div class="card"><h3>Emergency Lighting</h3></div>
+    <div class="card"><h3>Sprinkler System</h3></div>
+    <div class="card"><h3>FM200</h3></div>
+  </div>
+</section>
+
 
   <section id="about">
     <h2 class="section-title">About Us</h2>
     <p>EUROTECH Integrated Technical Services is committed to protecting lives and property through innovative and reliable fire safety systems. With years of industry experience, we deliver customized solutions to meet the unique needs of our clients.</p>
   </section>
 
-  <section id="projects">
-    <h2 class="section-title">Our Projects</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Commercial Tower - Dubai</h3>
-        <p>Complete fire alarm and sprinkler system installed.</p>
-      </div>
-      <div class="card">
-        <h3>Warehouse - Sharjah</h3>
-        <p>Hydrant and smoke control systems implemented.</p>
-      </div>
-      <div class="card">
-        <h3>Residential Complex - Abu Dhabi</h3>
-        <p>Integrated fire and safety systems designed and deployed.</p>
-      </div>
-    </div>
-  </section>
+  
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
+  <div class="card-container">
+    <div class="card"><h3>Fire Fighting</h3></div>
+    <div class="card"><h3>Fire Alarm</h3></div>
+    <div class="card"><h3>Emergency Lighting</h3></div>
+    <div class="card"><h3>Sprinkler System</h3></div>
+    <div class="card"><h3>FM200</h3></div>
+  </div>
+</section>
+
 
   <section id="clients">
     <h2 class="section-title">Our Clients</h2>
     <div class="card-container">
-      <div class="card">
-        <h3>Emirates Group</h3>
-        <p>Trusted partner for multiple facility fire protection projects.</p>
-      </div>
-      <div class="card">
-        <h3>Al-Futtaim</h3>
-        <p>Worked on major logistics and warehousing safety infrastructure.</p>
-      </div>
-      <div class="card">
-        <h3>Damac Properties</h3>
-        <p>Ongoing collaboration in residential and commercial developments.</p>
-      </div>
+      <div class="card"><h3>Design Infinity</h3></div>
+      <div class="card"><h3>ADNOC</h3></div>
+      <div class="card"><h3>Medcare Group</h3></div>
     </div>
   </section>
 
@@ -163,9 +246,11 @@
     </form>
   </section>
 
-  <footer>
-    &copy; 2025 EUROTECH Integrated Technical Services. All rights reserved.
-  </footer>
+  
+<footer style="font-size: 0.8rem; text-align: center; padding: 2rem; background-color: rgba(0, 0, 0, 0.6); border-radius: 10px; margin: 2rem;">
+  &copy; 2025 EUROTECH INTEGRATED TECHNICAL SERVICES. All rights reserved.
+</footer>
+
 
 </body>
 </html>
