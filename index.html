@@ -1,256 +1,214 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EUROTECH Integrated Technical Services</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eurotech Integrated Technical Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
-    body {
-      background: url('fire-background.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      line-height: 1.6;
+
+    body, html {
+      height: 100%;
     }
+
     header {
-      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      width: 100%;
       padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 999;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10;
     }
-    header h1 {
-      font-size: 1.5rem;
-    }
+
     header img {
-      height: 50px;
+      height: 60px;
     }
+
     nav a {
-      margin: 0 1rem;
-      color: white;
+      color: #fff;
       text-decoration: none;
+      margin-left: 2rem;
       font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 3rem 2rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      margin: 1rem;
-      border-radius: 10px;
-    }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid white;
-      display: inline-block;
-    }
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.05);
-      background-color: rgba(255, 255, 255, 0.15);
-    }
-    form input, form textarea, form button {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 5px;
-    }
-    form button {
-      background-color: #FF4500;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    form button:hover {
-      background-color: #e03e00;
-    }
-    footer {
-  font-size: 0.8rem;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+
+    .hero {
+      background: url('fire-background.png') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
       text-align: center;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-      margin: 2rem;
+      position: relative;
     }
-  </style>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const links = document.querySelectorAll("nav a");
-      const sections = document.querySelectorAll("section");
-
-      // Hide all sections except home on load
-      sections.forEach(section => {
-        if (section.id !== "home") {
-          section.style.display = "none";
-        }
-      });
-
-      links.forEach(link => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href").substring(1);
-          sections.forEach(section => {
-            section.style.display = "none";
-          });
-          document.getElementById(targetId).style.display = "block";
-          window.scrollTo(0, 0);
-        });
-      });
-    });
-  </script>
-
-  <style>
-    section {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
     }
-    section.active {
-      opacity: 1;
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const links = document.querySelectorAll("nav a");
-      const sections = document.querySelectorAll("section");
 
-      function showSection(targetId) {
-        sections.forEach(section => {
-          section.classList.remove("active");
-          section.style.display = "none";
-        });
-        const targetSection = document.getElementById(targetId);
-        targetSection.style.display = "block";
-        setTimeout(() => {
-          targetSection.classList.add("active");
-        }, 10);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
 
-      // Initially show only the home section
-      sections.forEach(section => {
-        if (section.id === "home") {
-          section.style.display = "block";
-          section.classList.add("active");
-        } else {
-          section.style.display = "none";
-        }
-      });
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #111;
+      color: #ccc;
+      font-size: 0.8rem;
+    }
+  
+  .contact-info {
+    font-size: 14px;
+    color: white;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+  }
+  .contact-info a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
 
-      links.forEach(link => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href").substring(1);
-          showSection(targetId);
-        });
-      });
-    });
-  </script>
+.section {
+  padding: 40px 20px;
+  color: white;
+  text-align: center;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  background-color: #c62828;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-align: left;
+}
+.dropdown-content a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+header nav ul li {
+  position: relative;
+}
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+header nav ul li .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: black;
+  min-width: 200px;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+header nav ul li .dropdown-content li a {
+  color: black;
+  display: block;
+  padding: 10px;
+}
+header nav ul li .dropdown-content li a:hover {
+  background-color: #eee;
+}
+header nav ul li:hover .dropdown-content {
+  display: block;
+}
+</style>
 </head>
 <body>
-
-  <header>
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <img src="logo.png" alt="Eurotech Logo" />
-      <h1>EUROTECH</h1>
-    </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#clients">Clients</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  
-<section id="home" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 90vh; text-align: center;">
-
-    <h2 class="section-title" style="font-size: 3rem;">Welcome to EUROTECH</h2>
-    <p>We provide expert fire protection system services across the UAE. Safety, compliance, and reliability are at the heart of everything we do.</p>
-  
+<header>
+<img alt="Eurotech Logo" src="logo_png_eits__1_-removebg-preview.png"/>
+<div class="contact-info">
+<a href="mailto:info@eurotechgulf.com">info@eurotechgulf.com</a> |
+  <a href="tel:+971589213536">0589 213536</a>
+</div>
+<nav>
+<a href="#services">Services</a>
+<a href="#clients">Clients</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-content">
+<h1>Welcome to Eurotech Integrated Technical Services</h1>
+<p>Experts in Fire Protection Systems across the UAE</p>
+</div>
 </section>
-<section id="services">
-  <h2 class="section-title">Our Services</h2>
-  <div class="card-container">
-    <div class="card"><h3>Fire Fighting</h3></div>
-    <div class="card"><h3>Fire Alarm</h3></div>
-    <div class="card"><h3>Emergency Lighting</h3></div>
-    <div class="card"><h3>Sprinkler System</h3></div>
-    <div class="card"><h3>FM200</h3></div>
-  </div>
+<section class="section" id="services">
+<h2>Our Services</h2>
+<div class="dropdown">
+<button class="dropbtn">View Services</button>
+<div class="dropdown-content">
+<a href="#">Fire Fighting System</a>
+<a href="#">Fire Alarm System</a>
+<a href="#">Emergency Lighting System</a>
+<a href="#">Sprinkler System</a>
+<a href="#">FM200</a>
+<a href="#">CBS System</a>
+</div>
+</div>
 </section>
-
-
-  <section id="about">
-    <h2 class="section-title">About Us</h2>
-    <p>EUROTECH Integrated Technical Services is committed to protecting lives and property through innovative and reliable fire safety systems. With years of industry experience, we deliver customized solutions to meet the unique needs of our clients.</p>
-  </section>
-
-  
-<section id="services">
-  <h2 class="section-title">Our Services</h2>
-  <div class="card-container">
-    <div class="card"><h3>Fire Fighting</h3></div>
-    <div class="card"><h3>Fire Alarm</h3></div>
-    <div class="card"><h3>Emergency Lighting</h3></div>
-    <div class="card"><h3>Sprinkler System</h3></div>
-    <div class="card"><h3>FM200</h3></div>
-  </div>
-</section>
-
-
-  <section id="clients">
-    <h2 class="section-title">Our Clients</h2>
-    <div class="card-container">
-      <div class="card"><h3>Design Infinity</h3></div>
-      <div class="card"><h3>ADNOC</h3></div>
-      <div class="card"><h3>Medcare Group</h3></div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  
-<footer style="font-size: 0.8rem; text-align: center; padding: 2rem; background-color: rgba(0, 0, 0, 0.6); border-radius: 10px; margin: 2rem;">
-  &copy; 2025 EUROTECH INTEGRATED TECHNICAL SERVICES. All rights reserved.
+<footer>
+  © 2025 EUROTECH INTEGRATED TECHNICAL SERVICES. All rights reserved.
 </footer>
-
-
 </body>
 </html>
